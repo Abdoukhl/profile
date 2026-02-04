@@ -754,70 +754,494 @@ h1, h2, h3, h4 {
     gap: 6px;
 }
 
-.footer-stats i {
-    color: var(--accent-blue);
+        .footer-stats i {
+            color: var(--accent-blue);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+            .main-content {
+                margin-left: 240px;
+            }
+            
+            .repositories-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                padding: 16px;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .profile-header {
+                text-align: center;
+                padding-bottom: 16px;
+            }
+            
+            .profile-pic {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .username {
+                font-size: 1.2rem;
+            }
+            
+            .user-stats {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+                margin-bottom: 20px;
+            }
+            
+            .stat {
+                padding: 12px 8px;
+            }
+            
+            .stat-number {
+                font-size: 1.4rem;
+            }
+            
+            .stat-label {
+                font-size: 0.75rem;
+            }
+            
+            .nav-menu {
+                margin-bottom: 20px;
+            }
+            
+            .nav-link {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .nav-link i {
+                width: 18px;
+                font-size: 1rem;
+            }
+            
+            .time-display {
+                margin-top: 16px;
+                padding: 12px;
+                text-align: center;
+            }
+            
+            #local-time {
+                font-size: 1rem;
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .main-header {
+                flex-direction: column;
+                gap: 16px;
+                margin-bottom: 30px;
+            }
+            
+            .full-name {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+            
+            .user-bio {
+                text-align: center;
+            }
+            
+            .user-bio p {
+                font-size: 1rem;
+            }
+            
+            .edit-profile-btn {
+                align-self: center;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .social-links-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 8px;
+            }
+            
+            .social-link {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .repositories-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .repo-card {
+                padding: 20px;
+            }
+            
+            .repo-header h3 {
+                font-size: 1.1rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .skill-tags {
+                gap: 6px;
+            }
+            
+            .skill-tag {
+                padding: 5px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .contact-form {
+                padding: 24px;
+            }
+            
+            .footer-stats {
+                flex-direction: column;
+                gap: 12px;
+                font-size: 0.85rem;
+            }
+            
+            /* Contribution Graph Responsive */
+            .graph-months {
+                margin-left: 16px;
+                gap: 16px;
+                font-size: 0.7rem;
+            }
+            
+            .graph-days {
+                font-size: 0.65rem;
+            }
+            
+            .contribution-cell {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .week-column {
+                gap: 2px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                padding: 12px;
+            }
+            
+            .profile-pic {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .username {
+                font-size: 1rem;
+            }
+            
+            .user-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+            
+            .stat {
+                padding: 8px 6px;
+            }
+            
+            .stat-number {
+                font-size: 1.2rem;
+            }
+            
+            .stat-label {
+                font-size: 0.7rem;
+            }
+            
+            .main-content {
+                padding: 16px;
+            }
+            
+            .full-name {
+                font-size: 1.5rem;
+            }
+            
+            .user-bio p {
+                font-size: 0.9rem;
+            }
+            
+            .bio-section {
+                padding: 20px;
+            }
+            
+            .social-links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .repo-card {
+                padding: 16px;
+            }
+            
+            .repo-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .repo-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .skills-section {
+                padding: 20px;
+            }
+            
+            .contact-form {
+                padding: 20px;
+            }
+            
+            .contact-form input,
+            .contact-form textarea {
+                padding: 10px 14px;
+            }
+            
+            .submit-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            /* Extra small screens */
+            .graph-months {
+                gap: 12px;
+                font-size: 0.65rem;
+            }
+            
+            .graph-days {
+                font-size: 0.6rem;
+            }
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
+.full-name {
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.user-bio {
+    text-align: center;
+}
+
+.user-bio p {
+    font-size: 1rem;
+}
+
+.edit-profile-btn {
+    align-self: center;
+}
+
+.info-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.social-links-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 8px;
+}
+
+.social-link {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+}
+
+.repositories-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.repo-card {
+    padding: 20px;
+}
+
+.repo-header h3 {
+    font-size: 1.1rem;
+}
+
+.skills-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+.skill-tags {
+    gap: 6px;
+}
+
+.skill-tag {
+    padding: 5px 12px;
+    font-size: 0.85rem;
+}
+
+.contact-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.contact-form {
+    padding: 24px;
+}
+
+.footer-stats {
+    flex-direction: column;
+    gap: 12px;
+    font-size: 0.85rem;
+}
+
+/* Contribution Graph Responsive */
+.graph-months {
+    margin-left: 16px;
+    gap: 16px;
+    font-size: 0.7rem;
+}
+
+.graph-days {
+    font-size: 0.65rem;
+}
+
+.contribution-cell {
+    width: 10px;
+    height: 10px;
+}
+
+.week-column {
+    gap: 2px;
+}
+
+}
+
+@media (max-width: 480px) {
     .sidebar {
-        width: 240px;
+        padding: 12px;
     }
+
+    .profile-pic {
+        width: 60px;
+        height: 60px;
+    }
+
+    .username {
+        font-size: 1rem;
+    }
+
+    .user-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+
+    .stat {
+        padding: 8px 6px;
+    }
+
+    .stat-number {
+        font-size: 1.2rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+    }
+
     .main-content {
-        margin-left: 240px;
-    }
-}
-
-@media (max-width: 768px) {
-    body {
-        flex-direction: column;
-    }
-    
-    .sidebar {
-        position: static;
-        width: 100%;
-        height: auto;
         padding: 16px;
     }
-    
-    .main-content {
-        margin-left: 0;
-        padding: 24px;
+
+    .full-name {
+        font-size: 1.5rem;
     }
-    
-    .main-header {
+
+    .user-bio p {
+        font-size: 0.9rem;
+    }
+
+    .bio-section {
+        padding: 20px;
+    }
+
+    .social-links-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .repo-card {
+        padding: 16px;
+    }
+
+    .repo-header {
         flex-direction: column;
-        gap: 16px;
+        align-items: flex-start;
+        gap: 8px;
     }
-    
-    .edit-profile-btn {
-        align-self: flex-start;
-    }
-    
-    .repositories-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .contact-content {
-        grid-template-columns: 1fr;
-    }
-    
-    .footer-stats {
+
+    .repo-footer {
         flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .skills-section {
+        padding: 20px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 10px 14px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Extra small screens */
+    .graph-months {
         gap: 12px;
+        font-size: 0.65rem;
+    }
+
+    .graph-days {
+        font-size: 0.6rem;
+    }
+
+    .contribution-cell {
+        width: 8px;
+        height: 8px;
     }
 }
 
 /* Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
 ::-webkit-scrollbar-track {
     background: var(--dark-bg);
 }

@@ -1,4 +1,121 @@
-// Update Local Time
+// GitHub API Configuration
+const GITHUB_USERNAME = 'Abdoukhl';
+const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
+
+// Fetch repositories from GitHub API
+async function fetchGitHubRepositories() {
+    try {
+        const response = await fetch(GITHUB_API_URL);
+        if (!response.ok) throw new Error('Failed to fetch repositories');
+        
+        const repos = await response.json();
+        return repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)).slice(0, 6);
+    } catch (error) {
+        console.error('Error fetching repositories:', error);
+        return null;
+    }
+}
+
+// Update repository cards with real GitHub data
+async function updateRepositories() {
+    const repos = await fetchGitHubRepositories();
+    if (!repos) return;
+
+    const container = document.querySelector('.repositories-grid');
+    if (!container) return;
+
+    container.innerHTML = '';
+
+    repos.forEach(repo => {
+        const languageColors = {
+            'Java': '#b07219',
+            'JavaScript': '#f1e05a',
+            'PHP': '#4F5D95',
+            'Python': '#3572A5',
+            'HTML': '#e34c26',
+            'CSS': '#563d7c',
+            'Blade': '#f7523f',
+            'EJS': '#A91E50',
+            'TypeScript': '#2b7489',
+            'Vue': '#2c3e50',
+            'React': '#61dafb',
+            'Node.js': '#339933'
+        };
+
+        const language = repo.language || 'Unknown';
+        const color = languageColors[language] || '#586069';
+        
+        const repoCard = document.createElement('div');
+        repoCard.className = 'repo-card';
+        repoCard.innerHTML = `
+            <div class="repo-header">
+                <h3><i class="fas fa-folder"></i> ${repo.name}</h3>
+                <span class="repo-language" style="background: ${color}; color: white;">${language}</span>
+            </div>
+            <p class="repo-description">${repo.description || 'No description available'}</p>
+            <div class="repo-footer">
+                <span class="repo-stats"><i class="fas fa-star"></i> ${repo.stargazers_count}</span>
+                <span class="repo-stats"><i class="fas fa-code-branch"></i> ${repo.forks_count}</span>
+                <span class="repo-updated">Updated ${formatDate(repo.updated_at)}</span>
+            </div>
+        `;
+        
+        repoCard.addEventListener('click', () => {
+            window.open(repo.html_url, '_blank');
+        });
+        
+        container.appendChild(repoCard);
+    });
+
+    // Update stats
+    updateStats(repos);
+}
+
+// Format date for display
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now - date);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 1) return 'today';
+    if (diffDays === 2) return 'yesterday';
+    if (diffDays <= 7) return `${diffDays} days ago`;
+    if (diffDays <= 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+    if (diffDays <= 365) return `${Math.floor(diffDays / 30)} months ago`;
+    return `${Math.floor(diffDays / 365)} years ago`;
+}
+
+// Update user statistics
+function updateStats(repos) {
+    const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+    const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
+    
+    // Update stat numbers if they exist
+    const repoCount = document.querySelector('.stat-number');
+    if (repoCount) {
+        repoCount.textContent = repos.length;
+    }
+    
+    // Update footer stats
+    const footerRepos = document.querySelector('.footer-stats span:first-child');
+    if (footerRepos) {
+        footerRepos.innerHTML = `<i class="fas fa-code-branch"></i> ${repos.length} Repositories`;
+    }
+}
+
+// Fetch contribution data (simplified version)
+async function fetchContributions() {
+    // Note: GitHub GraphQL API would be needed for real contribution data
+    // For now, we'll keep the existing generated graph
+    console.log('Contributions graph using generated data');
+}
+
+// Initialize GitHub data
+async function initializeGitHubData() {
+    await updateRepositories();
+    await fetchContributions();
+}
 function updateLocalTime() {
     const now = new Date();
     const options = {
@@ -156,6 +273,9 @@ document.querySelector('.contact-form')?.addEventListener('submit', function(e) 
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize GitHub data first
+    initializeGitHubData();
+    
     // Set initial time and update every second
     updateLocalTime();
     setInterval(updateLocalTime, 1000);
@@ -171,15 +291,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-    
-    // Add click functionality to repository cards
-    document.querySelectorAll('.repo-card').forEach(card => {
-        card.addEventListener('click', function() {
-            const repoName = this.querySelector('h3').textContent;
-            alert(`Opening repository: ${repoName}`);
-            // In real implementation, this would navigate to the repository
         });
     });
     
