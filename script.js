@@ -113,48 +113,6 @@ function startAutoRefresh() {
     });
 }
 
-// Manual refresh button
-function addRefreshButton() {
-    const sectionTitle = document.querySelector('#repositories .section-title');
-    if (!sectionTitle) return;
-    
-    const refreshBtn = document.createElement('button');
-    refreshBtn.className = 'refresh-btn';
-    refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
-    refreshBtn.style.cssText = `
-        margin-left: auto;
-        padding: 8px 16px;
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        transition: background 0.2s;
-    `;
-    
-    refreshBtn.addEventListener('click', async () => {
-        refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
-        refreshBtn.disabled = true;
-        
-        // Clear cache to force fresh fetch
-        repositoriesCache = null;
-        lastFetchTime = 0;
-        
-        await updateRepositories();
-        
-        setTimeout(() => {
-            refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
-            refreshBtn.disabled = false;
-        }, 1000);
-    });
-    
-    sectionTitle.appendChild(refreshBtn);
-}
-
 // Format date for display
 function formatDate(dateString) {
     const date = new Date(dateString);
