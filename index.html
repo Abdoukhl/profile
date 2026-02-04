@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abderrahmane Khial - Software Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <nav class="sidebar">
+        <div class="profile-header">
+            <img src="profile-pic.jpg" alt="Abderrahmane Khial" class="profile-pic">
+            <h1 class="username">Abdoukhl</h1>
+            <div class="pronouns">he/him</div>
+        </div>
+        
+        <div class="user-stats">
+            <div class="stat">
+                <span class="stat-number">5</span>
+                <span class="stat-label">Repositories</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">0</span>
+                <span class="stat-label">Projects</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">0</span>
+                <span class="stat-label">Packages</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">0</span>
+                <span class="stat-label">Stars</span>
+            </div>
+        </div>
+        
+        <ul class="nav-menu">
+            <li><a href="#overview" class="nav-link active"><i class="fas fa-th-large"></i> Overview</a></li>
+            <li><a href="#repositories" class="nav-link"><i class="fas fa-code"></i> Repositories</a></li>
+            <li><a href="#projects" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
+            <li><a href="#contributions" class="nav-link"><i class="fas fa-chart-line"></i> Contributions</a></li>
+            <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+        
+        <div class="time-display">
+            <i class="fas fa-clock"></i>
+            <span id="local-time">Loading time...</span>
+            <div id="timezone">(GMT+1:00) Algeria Time</div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <h1 class="full-name">ABDERRAHMAN_KHIAL</h1>
+                <div class="user-bio">
+                    <p>Software Developer | Web & AI Master's student</p>
+                    <p class="university">Mohamed Chérif Messaadia University – Souk Ahras, Algeria</p>
+                </div>
+            </div>
+            <button class="edit-profile-btn">
+                <i class="fas fa-pen"></i> Edit Profile
+            </button>
+        </header>
+
+        <!-- Bio Section -->
+        <section class="bio-section">
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-building"></i>
+                    <span>Company: <strong>Algeria - Souk Ahras</strong></span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email: <a href="mailto:abderrahmanekhial05@gmail.com">abderrahmanekhial05@gmail.com</a></span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-globe"></i>
+                    <span>Website: <a href="#" class="website-link">Portfolio</a></span>
+                </div>
+            </div>
+
+            <!-- Social Accounts -->
+            <div class="social-section">
+                <h3><i class="fas fa-share-alt"></i> Social Accounts</h3>
+                <div class="social-links-grid">
+                    <a href="https://www.instagram.com/abderrahman_khial" class="social-link instagram">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.facebook.com/abderrahman.khial" class="social-link facebook">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                    <a href="https://x.com/Abdou_khial41" class="social-link twitter">
+                        <i class="fab fa-x-twitter"></i> Twitter/X
+                    </a>
+                    <a href="https://www.linkedin.com/in/abderrahmane-khial" class="social-link linkedin">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Repositories Section -->
+        <section id="repositories" class="section">
+            <h2 class="section-title"><i class="fas fa-code"></i> Popular Repositories</h2>
+            <div class="repositories-grid">
+                <div class="repo-card">
+                    <div class="repo-header">
+                        <h3><i class="fas fa-folder"></i> GymManagement</h3>
+                        <span class="repo-language java">Java</span>
+                    </div>
+                    <p class="repo-description">A comprehensive gym management system built with Java</p>
+                    <div class="repo-footer">
+                        <span class="repo-stats"><i class="fas fa-star"></i> 12</span>
+                        <span class="repo-stats"><i class="fas fa-code-branch"></i> 3</span>
+                        <span class="repo-updated">Updated 2 days ago</span>
+                    </div>
+                </div>
+
+                <div class="repo-card">
+                    <div class="repo-header">
+                        <h3><i class="fas fa-folder"></i> Car-Rental-Management-System</h3>
+                        <span class="repo-language blade">Blade</span>
+                    </div>
+                    <p class="repo-description">Laravel-based car rental platform with multi-role support (Admin/Agency/Customer)</p>
+                    <div class="repo-footer">
+                        <span class="repo-stats"><i class="fas fa-star"></i> 8</span>
+                        <span class="repo-stats"><i class="fas fa-code-branch"></i> 5</span>
+                        <span class="repo-updated">Updated 1 week ago</span>
+                    </div>
+                </div>
+
+                <div class="repo-card">
+                    <div class="repo-header">
+                        <h3><i class="fas fa-folder"></i> employee_project_management</h3>
+                        <span class="repo-language php">PHP</span>
+                    </div>
+                    <p class="repo-description">Employee Project Management System with Laravel 12</p>
+                    <div class="repo-footer">
+                        <span class="repo-stats"><i class="fas fa-star"></i> 6</span>
+                        <span class="repo-stats"><i class="fas fa-code-branch"></i> 4</span>
+                        <span class="repo-updated">Updated 3 days ago</span>
+                    </div>
+                </div>
+
+                <div class="repo-card">
+                    <div class="repo-header">
+                        <h3><i class="fas fa-folder"></i> announcement-platform</h3>
+                        <span class="repo-language ejs">EJS</span>
+                    </div>
+                    <p class="repo-description">Modern web app for announcements with real-time updates</p>
+                    <div class="repo-footer">
+                        <span class="repo-stats"><i class="fas fa-star"></i> 5</span>
+                        <span class="repo-stats"><i class="fas fa-code-branch"></i> 2</span>
+                        <span class="repo-updated">Updated yesterday</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contribution Graph -->
+        <section id="contributions" class="section">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> Contribution Activity</h2>
+            <div class="contribution-graph">
+                <div class="graph-header">
+                    <h3>17 contributions in the last year</h3>
+                    <div class="graph-legend">
+                        <span class="legend-item">Less</span>
+                        <div class="legend-colors">
+                            <span class="color-box lvl0"></span>
+                            <span class="color-box lvl1"></span>
+                            <span class="color-box lvl2"></span>
+                            <span class="color-box lvl3"></span>
+                            <span class="color-box lvl4"></span>
+                        </div>
+                        <span class="legend-item">More</span>
+                    </div>
+                </div>
+                <div class="graph-container" id="contribution-graph">
+                    <!-- Graph will be generated by JavaScript -->
+                </div>
+                <div class="recent-activity">
+                    <h4><i class="fas fa-history"></i> Recent Activity</h4>
+                    <div class="activity-item">
+                        <span class="activity-repo">Abdoukhl/announcement-platform</span>
+                        <span class="activity-tech">EJS</span>
+                        <span class="activity-date">3 commits on Feb 4</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-repo">Abdoukhl/Car-Rental-Management-System</span>
+                        <span class="activity-tech">Blade</span>
+                        <span class="activity-date">3 commits on Feb 4</span>
+                    </div>
+                    <div class="activity-item">
+                        <span class="activity-repo">Abdoukhl/employee_project_management</span>
+                        <span class="activity-tech">PHP</span>
+                        <span class="activity-date">2 commits on Feb 4</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="skills-section">
+            <h2 class="section-title"><i class="fas fa-laptop-code"></i> Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">PHP</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-layer-group"></i> Frameworks & Technologies</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Laravel</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">EJS</span>
+                        <span class="skill-tag">Blade</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-graduation-cap"></i> Areas of Study</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Web Development</span>
+                        <span class="skill-tag">Artificial Intelligence</span>
+                        <span class="skill-tag">Software Engineering</span>
+                        <span class="skill-tag">Database Management</span>
+                        <span class="skill-tag">System Architecture</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <h2 class="section-title"><i class="fas fa-envelope"></i> Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>Souk Ahras, Algeria</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-university"></i>
+                        <div>
+                            <h3>Education</h3>
+                            <p>Mohamed Chérif Messaadia University</p>
+                            <p>Master's in Web & AI</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div>
+                            <h3>Availability</h3>
+                            <p>Open for freelance projects</p>
+                            <p>Full-time opportunities</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <h3>Send Message</h3>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-code"></i>
+                    <span>Abdoukhl</span>
+                </div>
+                <p class="footer-text">© 2024 Abderrahmane Khial. All rights reserved.</p>
+                <p class="footer-note">Software Developer & AI Enthusiast | Building the future one line of code at a time</p>
+                <div class="footer-stats">
+                    <span><i class="fas fa-code-branch"></i> 5 Repositories</span>
+                    <span><i class="fas fa-code"></i> 4 Languages</span>
+                    <span><i class="fas fa-calendar-check"></i> 17 Contributions</span>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
