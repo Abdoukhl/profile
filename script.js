@@ -423,24 +423,32 @@ function generateContributionGraph() {
     graph.appendChild(container);
 }
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Update active state
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-        
-        // Scroll to section
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
+// Initialize page when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Set initial time and update every second
+    updateLocalTime();
+    setInterval(updateLocalTime, 1000);
+    
     // Generate contribution graph
     generateContributionGraph();
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Update active state
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Scroll to section
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
     
     // Animate repository cards on hover
     document.querySelectorAll('.repo-card').forEach(card => {
@@ -484,4 +492,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     }
     
     window.addEventListener('scroll', updateActiveNav);
+    
+    // Initialize GitHub data
+    initializeGitHubData();
 });
