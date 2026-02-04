@@ -1145,6 +1145,11 @@ h1, h2, h3, h4 {
                 font-size: 0.85rem;
             }
             
+            /* Hide duplicate refresh button on mobile */
+            .refresh-btn {
+                display: none !important;
+            }
+            
             /* Contribution Graph Responsive */
             .graph-months {
                 margin-left: 16px;
@@ -1183,10 +1188,6 @@ h1, h2, h3, h4 {
             .user-stats {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 6px;
-            }
-            
-            .stat {
-                padding: 8px 6px;
             }
             
             .stat-number {
@@ -1266,89 +1267,6 @@ h1, h2, h3, h4 {
                 height: 8px;
             }
         }
-
-        /* Scrollbar Styling */
-        ::-webkit-scrollbar-track {
-            background: var(--dark-bg);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--border-color);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--text-secondary);
-        }
-        padding: 12px;
-    }
-
-    .profile-pic {
-        width: 60px;
-        height: 60px;
-    }
-
-    .username {
-        font-size: 1rem;
-    }
-
-    .bio-section {
-        padding: 20px;
-    }
-
-    .social-links-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .repo-card {
-        padding: 16px;
-    }
-
-    .repo-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .repo-footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .skills-section {
-        padding: 20px;
-    }
-
-    .contact-form {
-        padding: 20px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        padding: 10px 14px;
-    }
-
-    .submit-btn {
-        width: 100%;
-        justify-content: center;
-    }
-
-    /* Extra small screens */
-    .graph-months {
-        gap: 12px;
-        font-size: 0.65rem;
-    }
-
-    .graph-days {
-        font-size: 0.6rem;
-    }
-
-    .contribution-cell {
-        width: 8px;
-        height: 8px;
-    }
-}
 
 /* Scrollbar Styling */
 ::-webkit-scrollbar-track {
