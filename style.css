@@ -1292,35 +1292,6 @@ h1, h2, h3, h4 {
         font-size: 1rem;
     }
 
-    .user-stats {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
-    }
-
-    .stat {
-        padding: 8px 6px;
-    }
-
-    .stat-number {
-        font-size: 1.2rem;
-    }
-
-    .stat-label {
-        font-size: 0.7rem;
-    }
-
-    .main-content {
-        padding: 16px;
-    }
-
-    .full-name {
-        font-size: 1.5rem;
-    }
-
-    .user-bio p {
-        font-size: 0.9rem;
-    }
-
     .bio-section {
         padding: 20px;
     }
