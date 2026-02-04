@@ -1042,106 +1042,26 @@ h1, h2, h3, h4 {
             .graph-days {
                 font-size: 0.6rem;
             }
-}
+            
+            .contribution-cell {
+                width: 8px;
+                height: 8px;
+            }
+        }
 
-.full-name {
-    font-size: 1.8rem;
-    text-align: center;
-}
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar-track {
+            background: var(--dark-bg);
+        }
 
-.user-bio {
-    text-align: center;
-}
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
 
-.user-bio p {
-    font-size: 1rem;
-}
-
-.edit-profile-btn {
-    align-self: center;
-}
-
-.info-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-}
-
-.social-links-grid {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 8px;
-}
-
-.social-link {
-    padding: 10px 12px;
-    font-size: 0.9rem;
-}
-
-.repositories-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-}
-
-.repo-card {
-    padding: 20px;
-}
-
-.repo-header h3 {
-    font-size: 1.1rem;
-}
-
-.skills-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-}
-
-.skill-tags {
-    gap: 6px;
-}
-
-.skill-tag {
-    padding: 5px 12px;
-    font-size: 0.85rem;
-}
-
-.contact-content {
-    grid-template-columns: 1fr;
-    gap: 30px;
-}
-
-.contact-form {
-    padding: 24px;
-}
-
-.footer-stats {
-    flex-direction: column;
-    gap: 12px;
-    font-size: 0.85rem;
-}
-
-/* Contribution Graph Responsive */
-.graph-months {
-    margin-left: 16px;
-    gap: 16px;
-    font-size: 0.7rem;
-}
-
-.graph-days {
-    font-size: 0.65rem;
-}
-
-.contribution-cell {
-    width: 10px;
-    height: 10px;
-}
-
-.week-column {
-    gap: 2px;
-}
-
-}
-
-@media (max-width: 480px) {
-    .sidebar {
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
         padding: 12px;
     }
 

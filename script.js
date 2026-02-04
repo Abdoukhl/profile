@@ -251,7 +251,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     });
 });
 
-// Form submission handler
+// Form submission handler with real email functionality
 document.querySelector('.contact-form')?.addEventListener('submit', function(e) {
     e.preventDefault();
     
@@ -259,16 +259,84 @@ document.querySelector('.contact-form')?.addEventListener('submit', function(e) 
     const submitBtn = this.querySelector('.submit-btn');
     const originalText = submitBtn.innerHTML;
     
-    // Simulate form submission
+    // Get form data
+    const name = this.querySelector('input[type="text"]').value;
+    const email = this.querySelector('input[type="email"]').value;
+    const subject = this.querySelectorAll('input[type="text"]')[1].value;
+    const message = this.querySelector('textarea').value;
+    
+    // Show loading state
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
     
+    // Create email content
+    const emailContent = {
+        to: 'abderrahmanekhial05@gmail.com',
+        subject: `Portfolio Contact: ${subject}`,
+        body: `
+Name: ${name}
+Email: ${email}
+Subject: ${subject}
+
+Message:
+${message}
+
+---
+Sent from Abderrahmane Khial's Portfolio Website
+        `
+    };
+    
+    // Method 1: Try to open email client (most reliable)
+    const mailtoLink = `mailto:abderrahmanekhial05@gmail.com?subject=${encodeURIComponent(emailContent.subject)}&body=${encodeURIComponent(emailContent.body)}`;
+    
+    // Try to send via mailto
+    window.location.href = mailtoLink;
+    
+    // Show success message after a short delay
     setTimeout(() => {
-        alert('Thank you! Your message has been sent successfully.');
+        alert('Thank you for your message! Your email client should open with the message pre-filled. Please send it to contact Abderrahmane.');
         this.reset();
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
-    }, 1500);
+    }, 1000);
+    
+    // Method 2: Alternative - Web3Forms (free service)
+    // Uncomment below if you want to use a form service instead
+    /*
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            apikey: 'YOUR_WEB3FORMS_API_KEY', // Get free key from web3forms.com
+            name: name,
+            email: email,
+            subject: subject,
+            message: message,
+            from_name: 'Portfolio Contact Form',
+            to_email: 'abderrahmanekhial05@gmail.com'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Thank you! Your message has been sent successfully.');
+            this.reset();
+        } else {
+            alert('Sorry, there was an error. Please try again.');
+        }
+    })
+    .catch(error => {
+        alert('Error sending message. Please try again or email directly.');
+        console.error('Error:', error);
+    })
+    .finally(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    });
+    */
 });
 
 // Initialize
