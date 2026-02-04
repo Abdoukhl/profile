@@ -2,24 +2,43 @@
 const GITHUB_USERNAME = 'Abdoukhl';
 const GITHUB_API_URL = `https://api.github.com/users/${GITHUB_USERNAME}/repos`;
 
-// Fetch repositories from GitHub API
+// Cache management
+let repositoriesCache = null;
+let lastFetchTime = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
+// Fetch repositories from GitHub API with caching
 async function fetchGitHubRepositories() {
+    const now = Date.now();
+    
+    // Return cached data if still valid
+    if (repositoriesCache && (now - lastFetchTime) < CACHE_DURATION) {
+        return repositoriesCache;
+    }
+    
     try {
         const response = await fetch(GITHUB_API_URL);
         if (!response.ok) throw new Error('Failed to fetch repositories');
         
         const repos = await response.json();
-        return repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)).slice(0, 6);
+        const sortedRepos = repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)).slice(0, 6);
+        
+        // Update cache
+        repositoriesCache = sortedRepos;
+        lastFetchTime = now;
+        
+        return sortedRepos;
     } catch (error) {
         console.error('Error fetching repositories:', error);
-        return null;
+        // Return cached data if available, even if expired
+        return repositoriesCache || [];
     }
 }
 
 // Update repository cards with real GitHub data
 async function updateRepositories() {
     const repos = await fetchGitHubRepositories();
-    if (!repos) return;
+    if (!repos || repos.length === 0) return;
 
     const container = document.querySelector('.repositories-grid');
     if (!container) return;
@@ -39,7 +58,13 @@ async function updateRepositories() {
             'TypeScript': '#2b7489',
             'Vue': '#2c3e50',
             'React': '#61dafb',
-            'Node.js': '#339933'
+            'Node.js': '#339933',
+            'C++': '#f34b7d',
+            'C#': '#178600',
+            'Go': '#00ADD8',
+            'Rust': '#dea584',
+            'Swift': '#ffac45',
+            'Kotlin': '#A97BFF'
         };
 
         const language = repo.language || 'Unknown';
@@ -69,6 +94,65 @@ async function updateRepositories() {
 
     // Update stats
     updateStats(repos);
+}
+
+// Auto-refresh repositories periodically
+function startAutoRefresh() {
+    // Refresh every 5 minutes
+    setInterval(async () => {
+        console.log('Auto-refreshing repositories...');
+        await updateRepositories();
+    }, 5 * 60 * 1000);
+    
+    // Also refresh when page becomes visible again (user returns to tab)
+    document.addEventListener('visibilitychange', async () => {
+        if (!document.hidden) {
+            console.log('Page became visible, refreshing repositories...');
+            await updateRepositories();
+        }
+    });
+}
+
+// Manual refresh button
+function addRefreshButton() {
+    const sectionTitle = document.querySelector('#repositories .section-title');
+    if (!sectionTitle) return;
+    
+    const refreshBtn = document.createElement('button');
+    refreshBtn.className = 'refresh-btn';
+    refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
+    refreshBtn.style.cssText = `
+        margin-left: auto;
+        padding: 8px 16px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: background 0.2s;
+    `;
+    
+    refreshBtn.addEventListener('click', async () => {
+        refreshBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
+        refreshBtn.disabled = true;
+        
+        // Clear cache to force fresh fetch
+        repositoriesCache = null;
+        lastFetchTime = 0;
+        
+        await updateRepositories();
+        
+        setTimeout(() => {
+            refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh';
+            refreshBtn.disabled = false;
+        }, 1000);
+    });
+    
+    sectionTitle.appendChild(refreshBtn);
 }
 
 // Format date for display
@@ -343,6 +427,12 @@ Sent from Abderrahmane Khial's Portfolio Website
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize GitHub data first
     initializeGitHubData();
+    
+    // Add refresh button for repositories
+    addRefreshButton();
+    
+    // Start auto-refresh for repositories
+    startAutoRefresh();
     
     // Set initial time and update every second
     updateLocalTime();
