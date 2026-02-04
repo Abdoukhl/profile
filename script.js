@@ -219,7 +219,7 @@ document.querySelector('.contact-form')?.addEventListener('submit', function(e) 
     submitBtn.disabled = true;
     
     // Method 1: EmailJS (Recommended - Free tier available)
-    emailjs.send("service_dt972mp", "template_your_template_id", {
+    emailjs.send("service_dt972mp", "template_l5xkbga", {
         from_name: name,
         from_email: email,
         to_email: "abderrahmanekhial05@gmail.com",

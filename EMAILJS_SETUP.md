@@ -16,55 +16,17 @@
 ### 3. إنشاء قالب إيميل (Email Template)
 1. اذهب إلى "Email Templates"
 2. اضغط "Create New Template"
-3. **استبدل القالب الافتراضي** بالكود التالي:
+3. اكتب محتوى القالب:
 
-**القالب المخصص لموقعك:**
-```html
-<div style="font-family: system-ui, sans-serif, Arial; font-size: 12px">
-  <div style="background: #0d1117; color: #c9d1d9; padding: 20px; border-radius: 8px;">
-    <h2 style="color: #58a6ff; margin: 0 0 20px 0;">📧 New Message from Portfolio</h2>
-    
-    <div style="background: #161b22; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
-      <table role="presentation" style="width: 100%;">
-        <tr>
-          <td style="vertical-align: top; padding-right: 15px;">
-            <div style="font-size: 24px;">👤</div>
-          </td>
-          <td style="vertical-align: top;">
-            <div style="color: #f0f6fc; font-size: 16px; font-weight: bold;">{{from_name}}</div>
-            <div style="color: #8b949e; font-size: 13px;">{{from_email}}</div>
-          </td>
-        </tr>
-      </table>
-    </div>
-
-    <div style="background: #161b22; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
-      <h3 style="color: #58a6ff; margin: 0 0 10px 0; font-size: 14px;">📝 Subject</h3>
-      <div style="color: #c9d1d9; font-size: 15px;">{{subject}}</div>
-    </div>
-
-    <div style="background: #161b22; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
-      <h3 style="color: #58a6ff; margin: 0 0 10px 0; font-size: 14px;">💬 Message</h3>
-      <div style="color: #c9d1d9; line-height: 1.6; white-space: pre-wrap;">{{message}}</div>
-    </div>
-
-    <div style="text-align: center; padding: 15px; background: #0d1117; border-radius: 6px;">
-      <div style="color: #8b949e; font-size: 12px;">
-        Sent from Abderrahmane Khial's Portfolio Website
-      </div>
-      <div style="color: #8b949e; font-size: 11px; margin-top: 5px;">
-        🌐 https://Abdoukhl.github.io/profile
-      </div>
-    </div>
-  </div>
-</div>
+**مثال للقالب:**
 ```
+From: {{from_name}} ({{from_email}})
+Subject: {{subject}}
+Message: {{message}}
 
-**ملاحظة هامة:** تأكد من أن أسماء المتغيرات في القالب هي:
-- `{{from_name}}` للاسم
-- `{{from_email}}` للإيميل  
-- `{{subject}}` للموضوع
-- `{{message}}` للرسالة
+---
+Sent from Abderrahmane Khial's Portfolio Website
+```
 
 ### 4. الحصول على المفاتيح
 1. **Public Key**: اذهب إلى "Account" → "API Keys"
