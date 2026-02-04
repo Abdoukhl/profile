@@ -195,6 +195,112 @@ async function fetchContributions() {
     console.log('Contributions graph using generated data');
 }
 
+// Form submission handler with automatic email sending via EmailJS
+document.querySelector('.contact-form')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const submitBtn = this.querySelector('.submit-btn');
+    const originalText = submitBtn.innerHTML;
+    
+    // Get form data
+    const name = this.querySelector('input[type="text"]').value;
+    const email = this.querySelector('input[type="email"]').value;
+    const subject = this.querySelectorAll('input[type="text"]')[1].value;
+    const message = this.querySelector('textarea').value;
+    
+    // Validate form
+    if (!name || !email || !subject || !message) {
+        alert('Please fill in all fields');
+        return;
+    }
+    
+    // Show loading state
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    submitBtn.disabled = true;
+    
+    // Method 1: EmailJS (Recommended - Free tier available)
+    emailjs.send("service_dt972mp", "template_your_template_id", {
+        from_name: name,
+        from_email: email,
+        to_email: "abderrahmanekhial05@gmail.com",
+        subject: subject,
+        message: message,
+        reply_to: email
+    })
+    .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+        alert('Thank you! Your message has been sent successfully.');
+        document.querySelector('.contact-form').reset();
+    })
+    .catch(function(error) {
+        console.log('FAILED...', error);
+        
+        // Fallback to Web3Forms if EmailJS fails
+        sendWithWeb3Forms(name, email, subject, message, submitBtn, originalText);
+    })
+    .finally(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    });
+});
+
+// Fallback method using Web3Forms
+function sendWithWeb3Forms(name, email, subject, message, submitBtn, originalText) {
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Get free key from web3forms.com
+            name: name,
+            email: email,
+            subject: subject,
+            message: message,
+            from_name: name,
+            to_email: 'abderrahmanekhial05@gmail.com',
+            reply_to: email
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Thank you! Your message has been sent successfully.');
+            document.querySelector('.contact-form').reset();
+        } else {
+            alert('Sorry, there was an error. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        
+        // Final fallback: mailto link
+        const emailContent = `
+Name: ${name}
+Email: ${email}
+Subject: ${subject}
+
+Message:
+${message}
+
+---
+Sent from Abderrahmane Khial's Portfolio Website
+        `;
+        
+        const mailtoLink = `mailto:abderrahmanekhial05@gmail.com?subject=${encodeURIComponent(`Portfolio Contact: ${subject}`)}&body=${encodeURIComponent(emailContent)}`;
+        window.location.href = mailtoLink;
+        
+        setTimeout(() => {
+            alert('Please send the email from your email client to contact Abderrahmane.');
+        }, 1000);
+    })
+    .finally(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+    });
+}
+
 // Initialize GitHub data
 async function initializeGitHubData() {
     await updateRepositories();
