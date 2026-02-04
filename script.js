@@ -439,16 +439,6 @@ document.querySelectorAll('.nav-link').forEach(link => {
             targetSection.scrollIntoView({ behavior: 'smooth' });
         }
     });
-    // Add refresh button for repositories
-    addRefreshButton();
-    
-    // Start auto-refresh for repositories
-    startAutoRefresh();
-    
-    // Set initial time and update every second
-    updateLocalTime();
-    setInterval(updateLocalTime, 1000);
-    
     // Generate contribution graph
     generateContributionGraph();
     
